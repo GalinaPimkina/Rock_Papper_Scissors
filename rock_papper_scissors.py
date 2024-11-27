@@ -17,7 +17,7 @@ for w in welcome:
     time.sleep(2)
 
 while True:
-    user_input = input("Сделайте свой выбор: 'Камень' / 'Ножницы' / 'Бумага' или 'Выход' для выхода: ").lower()
+    user_input = input("Сделайте свой выбор: 'Камень' / 'Ножницы' / 'Бумага' или введите 'Выход', чтобы завершить игру: ").lower()
     if user_input == "выход":
         print(f"Итоговый счет: ваших побед - {user_wins}, побед компьютера - {computer_wins}, ничьих - {game_draw}.")
         time.sleep(1)
@@ -25,11 +25,10 @@ while True:
         break
 
     if user_input not in choices:
-        print("Выберите камень, ножницы или бумагу или выход.")
+        print("Выберите камень, ножницы, бумагу или выход.")
         continue
 
-    random_number = random.randint(0, 2)
-    computer_pick = choices[random_number]
+    computer_pick = random.choice(choices)
     time.sleep(1)
     print(f"У компьютера {computer_pick}.")
     time.sleep(1)
