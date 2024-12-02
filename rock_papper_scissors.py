@@ -1,9 +1,10 @@
 import random
 import time
 
+game_total = 0
 user_wins = 0
 computer_wins = 0
-game_draw = 0
+zero_wins = 0
 
 choices = ["камень", "ножницы", "бумага"]
 
@@ -17,24 +18,16 @@ for w in welcome:
     time.sleep(2)
 
 
-game = {
-    'total': 0,
-    'score': {
-        'player_win': 0,
-        'computer_win': 0,
-        'zero_win': 0
-    }
-}
-
-
 while True:
     user_input = input("Сделайте свой выбор: 'Камень' / 'Ножницы' / 'Бумага' или введите 'Выход', чтобы завершить игру: ").lower()
 
     if user_input == "выход":
-        print(f"Итоговый счет: ваших побед - {user_wins}, побед компьютера - {computer_wins}, ничьих - {game_draw}.")
-        time.sleep(1)
-        print('Приходите к нам еще! Пока!')
-        break
+        if game_total == 0:
+            print('Приходите к нам еще! Пока!')
+            break
+        else:
+            print("ИТОГИ ИГРЫ:", f"Итоговый счет: ваших побед - {user_wins}, побед компьютера - {computer_wins}, ничьих - {zero_wins}.", sep='\n')
+            break
 
     if user_input not in choices:
         print("Выберите камень, ножницы, бумагу или выход.")
@@ -46,9 +39,10 @@ while True:
     time.sleep(1)
 
     if user_input == "камень":
+        game_total += 1
         if computer_pick == "камень":
             print("Ничья!")
-            game_draw += 1
+            zero_wins += 1
             continue
         elif computer_pick == "ножницы":
             print("Вы победили!")
@@ -60,13 +54,14 @@ while True:
             continue
 
     if user_input == "ножницы":
+        game_total += 1
         if computer_pick == "камень":
             print("Компьютер победил!")
             computer_wins += 1
             continue
         elif computer_pick == "ножницы":
             print("Ничья!")
-            game_draw += 1
+            zero_wins += 1
             continue
         elif computer_pick == "бумага":
             print("Вы победили!")
@@ -74,6 +69,7 @@ while True:
             continue
 
     if user_input == "бумага":
+        game_total += 1
         if computer_pick == "камень":
             print("Вы победили!")
             user_wins += 1
@@ -84,5 +80,5 @@ while True:
             continue
         elif computer_pick == "бумага":
             print("Ничья!")
-            game_draw += 1
+            zero_wins += 1
             continue
