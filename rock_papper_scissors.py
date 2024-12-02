@@ -16,8 +16,20 @@ for w in welcome:
     print(w)
     time.sleep(2)
 
+
+game = {
+    'total': 0,
+    'score': {
+        'player_win': 0,
+        'computer_win': 0,
+        'zero_win': 0
+    }
+}
+
+
 while True:
     user_input = input("Сделайте свой выбор: 'Камень' / 'Ножницы' / 'Бумага' или введите 'Выход', чтобы завершить игру: ").lower()
+
     if user_input == "выход":
         print(f"Итоговый счет: ваших побед - {user_wins}, побед компьютера - {computer_wins}, ничьих - {game_draw}.")
         time.sleep(1)
